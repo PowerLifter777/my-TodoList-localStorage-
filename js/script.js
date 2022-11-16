@@ -50,7 +50,7 @@ addButton.addEventListener('click', function(){
 function primeStorage() {
 	 const deepCloneState = JSON.parse(JSON.stringify(todoList));
 
-	if (storageState.length < 6) {
+	if (storageState.length < 50) {
 		storageState.push(deepCloneState);
 	
 	} else {
