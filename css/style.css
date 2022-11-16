@@ -1,0 +1,110 @@
+body {
+	min-width: 480px;
+	font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+	font-size: 14px;
+	line-height: 36px;
+	color: #222222;
+	font-weight: 700;
+	max-width: 580px;
+	margin: 0 auto;
+}
+
+button {
+	width: 85px;
+	box-shadow: 3px 3px 3px;
+	height: 25px;
+}
+
+.container__header input {
+	height: 20px;
+}
+
+.container__header button {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.input_main {
+	display: inline-block;
+	margin: 25px auto 5px;
+	width: 294px;
+	box-shadow: 1px 1px 1px;
+}
+
+.container {
+	border: 1px solid gray;
+	padding: 15px;
+	margin: 10px;
+	border-radius: 110px;
+	background-color: rgb(230, 230, 230);
+	box-shadow: 5px 5px 5px;
+	min-height: 382px;
+}
+
+.container__header {
+	border: 1px solid black;
+	padding: 20px;
+	padding-top: 5px;
+	margin-top: 10px;
+	border-radius: 10px;
+	background-color: rgb(180, 180, 80);
+	box-shadow: 5px 5px 5px;
+}
+
+.list_container,
+.side_container {
+
+	border: 1px solid black;
+	padding-right: 20px;
+	/*padding-top: 5px;*/
+	margin-top: 10px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px;
+
+	background-color: rgb(230, 230, 230);
+	min-height: 230px;
+	padding-bottom: 0px;
+
+	display: inline-block;
+	line-height: 36px;
+}
+
+.list_container {
+	width: 410px;
+}
+
+.side_container {
+	width: 72px;
+	margin-left: 3px;
+	padding-right: 5px;
+}
+
+
+.button_dell,
+.input_color {
+	width: 30px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.input_color {
+	margin-left: 2px;
+}
+
+.side_menu,
+.side_container {
+	padding-left: 3px;
+}
+
+li {
+	list-style-type: none;
+}
+
+.list li:before {
+	content: '# ';
+	/* Добавляем в качестве маркера символ */
+}
+
+.side_container input {
+	height: 23px;
+}
