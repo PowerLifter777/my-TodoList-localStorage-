@@ -50,7 +50,7 @@ addButton.addEventListener('click', function(){
 function primeStorage() {
 	 const deepCloneState = JSON.parse(JSON.stringify(todoList));
 
-	if (storageState.length < 50) {
+	if (storageState.length < 11) {
 		storageState.push(deepCloneState);
 	
 	} else {
@@ -248,14 +248,14 @@ function forwardActivation () {
 	const storageLength = localStorage.getItem('storage') ? JSON.parse(localStorage.getItem('storage')).length : 0;
 	const count = JSON.parse(localStorage.getItem('count'));
 	
-	if (storageLength == 6) {
+	if (storageLength == 11) {
 		if (storageLength - 1 <= count) {
 			forwardButton.setAttribute('disabled', true);
 		} else {
 			forwardButton.removeAttribute('disabled');
 		};
 	
-	} else if (storageLength < 6 && storageLength > 0) {
+	} else if (storageLength < 11 && storageLength > 0) {
 		if (storageLength <= count) {
 			forwardButton.setAttribute('disabled', true);
 		} else {
@@ -271,17 +271,17 @@ localStorage.setItem('count', JSON.stringify(count));
 
 // Функция создания счетчика обратного отсчета для реализации переходов "вперед-назад"
 function setCount() {
-	count = !localStorage.getItem('count') ? 0 : count < 5 ? count + 1 : 5;
+	count = !localStorage.getItem('count') ? 0 : count < 10 ? count + 1 : 10;
 	localStorage.setItem('count', JSON.stringify(count));
 }
 	
 // Событие перехода "назад". Переход осуществляется по элементам массива памяти 2-го уровня. 
-// Увеличивается счетчик обратного отсчета (до 5 шагов), отрисовывается текущее состояние и записывается в память первого уровня.
+// Увеличивается счетчик обратного отсчета (до 10 шагов), отрисовывается текущее состояние и записывается в память первого уровня.
 // Если переходов "назад" больше нет, кнопка перехода деактивируется.
 backButton.addEventListener('click', function(){
 	const arr = JSON.parse(localStorage.getItem('storage'));
 
-	if (arr.length === 6 && count > 1) {
+	if (arr.length === 11 && count > 1) {
 		count --;
 		todoList = [...arr[count]];
 		localStorage.setItem('count', JSON.stringify(count));
@@ -290,7 +290,7 @@ backButton.addEventListener('click', function(){
 		activClearList();
 		displayMassages();
 
-	} else if (arr.length < 6 && count > 1) {
+	} else if (arr.length < 11 && count > 1) {
 		count --;
 		todoList = [...arr[count - 1]];
 		localStorage.setItem('count', JSON.stringify(count));
@@ -299,7 +299,7 @@ backButton.addEventListener('click', function(){
 		activClearList();
 		displayMassages();
 		
-	} else if (count == 1 && arr.length === 6){
+	} else if (count == 1 && arr.length === 11){
 		count --;
 		todoList = [...arr[0]];
 		localStorage.setItem('count', JSON.stringify(count));
@@ -321,12 +321,12 @@ backButton.addEventListener('click', function(){
 });
 
 // Событие перехода "вперед". Переход осуществляется по элементам массива памяти 2-го уровня. 
-// Уменьшается счетчик обратного отсчета (до 5 шагов), отрисовывается текущее состояние и записывается в память первого уровня.
+// Уменьшается счетчик обратного отсчета (до 10 шагов), отрисовывается текущее состояние и записывается в память первого уровня.
 // Если переходов "вперед" больше нет, кнопка перехода деактивируется.
 forwardButton.addEventListener('click', function(){
 	const arr = JSON.parse(localStorage.getItem('storage'));
 
-	if (arr.length - count > 2 && arr.length === 6) {
+	if (arr.length - count > 2 && arr.length === 11) {
 		todoList = [...arr[count + 1]];
 		count ++;
 		localStorage.setItem('count', JSON.stringify(count));
@@ -334,7 +334,7 @@ forwardButton.addEventListener('click', function(){
 		activClearList();
 		displayMassages();
 
-	} else if (arr.length - count > 0 && arr.length < 6) {
+	} else if (arr.length - count > 0 && arr.length < 11) {
 		todoList = [...arr[count]];
 		count ++;
 		forwardButton.setAttribute('disabled', true);
@@ -353,67 +353,6 @@ forwardButton.addEventListener('click', function(){
 		displayMassages();
 	};
 });
-
-
-
-
-
-
-
-// let count =  JSON.parse(localStorage.getItem('count'));
-
-// // Событие перехода "назад". Переход осуществляется по элементам массива памяти 2-го уровня. 
-// // Увеличивается счетчик обратного отсчета (до 5 шагов), отрисовывается текущее состояние и записывается в память первого уровня.
-// // Если переходов "назад" больше нет, кнопка перехода деактивируется.
-// backButton.addEventListener('click', function(){
-// 	let arr = JSON.parse(localStorage.getItem('storage'));
-
-// 	if (arr.length - 2 - count > 0 ) {
-// 		todoList = [...arr[arr.length - 2 - count]];
-// 		count++;
-// 		localStorage.setItem('count', JSON.stringify(count));
-// 		forwardButton.removeAttribute('disabled');
-// 		localStorage.setItem('storageList', JSON.stringify(todoList));
-// 		activClearList();
-// 		displayMassages();
-// 	} else {
-// 		todoList = [...arr[arr.length - 2 - count]];
-// 		// count++;
-// 		forwardButton.removeAttribute('disabled');
-// 		backButton.setAttribute('disabled', true);
-// 		localStorage.setItem('storageList', JSON.stringify(todoList));
-// 		activClearList();
-// 		displayMassages();
-// 	};
-// });
-
-// // Событие перехода "вперед". Переход осуществляется по элементам массива памяти 2-го уровня. 
-// // Уменьшается счетчик обратного отсчета (до 5 шагов), отрисовывается текущее состояние и записывается в память первого уровня.
-// // Если переходов "вперед" больше нет, кнопка перехода деактивируется.
-// forwardButton.addEventListener('click', function(){
-// 	let arr = JSON.parse(localStorage.getItem('storage'));
-
-// 	if (arr.length - 1 - count < 5 && arr.length - count < arr.length) {
-// 		todoList = [...arr[arr.length - 1 - count]];
-// 		count--;
-// 		localStorage.setItem('count', JSON.stringify(count));
-// 		localStorage.setItem('storageList', JSON.stringify(todoList));
-// 		activClearList();
-// 		displayMassages();
-// 		// console.log(arr.length - 1 - count);
-// 		// console.log(arr.length);
-// 	} else {
-// 		todoList = [...arr[arr.length - 1 - count]];
-// 		// count--;
-// 		localStorage.removeItem('count');
-// 		forwardButton.setAttribute('disabled', true);
-// 		localStorage.setItem('storageList', JSON.stringify(todoList));
-// 		activClearList();
-// 		displayMassages();
-// 	};
-// });
-
-
 
 
 
